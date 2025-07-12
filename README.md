@@ -45,7 +45,7 @@ Physical attributes (height, weight, reach) and knockout ability are key predict
 ---
 
 ### Lightweight
-![Lightweight Dashboard](visualizations/Lightweight_correlation_dashboard.png)
+![Lightweight Dashboard](visualizations/lightweight_correlation_dashboard.png)
 
 Success is driven by both offensive grappling and striking metrics. Southpaws hold the edge in win rate, while accuracy and volume are both critical.
 
@@ -116,29 +116,12 @@ Victory is driven by grappling (submissions and ground strikes) and experience. 
 
 ---
 
-## 🗂 Folder Structure
-
-UFC-Fight-Dashboard/
-├── data/
-│ └── cleaned_fighter_stats.csv
-├── visualizations/
-│ └── {WeightClass}_correlation_dashboard.png
-├── notebooks/
-│ └── analysis_notebooks.ipynb
-└── README.md
-
-
----
-
 ## Future Work
 
 - Incorporate fight-level momentum shifts
 - Explore multivariate models and clustering
 - Add interactive dashboard with filtering
+- Explore keys to victory relative to time period
 
 ---
-
-## Contributions
-
-Pull requests are welcome. If you'd like to collaborate, feel free to fork and submit PRs or open an issue to discuss changes.
 
