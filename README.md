@@ -7,7 +7,7 @@ The UFC Fight Analytics Dashboard is a data-driven exploration of key performanc
 - **Non-Combat Correlations (e.g., Win Streaks, Age, Titles)**
 - **Win Rates by Stance**
 
-## 🧠 Key Insights by Weight Class
+## Key Insights by Weight Class
 
 ### Bantamweight
 ![Bantamweight Dashboard](visualizations/Bantamweight_correlation_dashboard.png)
@@ -107,7 +107,7 @@ Victory is driven by grappling (submissions and ground strikes) and experience. 
 
 ---
 
-## 📊 Technical Details
+## Technical Details
 
 - Data was cleaned and enriched from raw UFC stats
 - Correlations were computed between each feature and the win outcome (`won`)
@@ -130,7 +130,7 @@ UFC-Fight-Dashboard/
 
 ---
 
-## 🚀 Future Work
+## Future Work
 
 - Incorporate fight-level momentum shifts
 - Explore multivariate models and clustering
@@ -138,7 +138,7 @@ UFC-Fight-Dashboard/
 
 ---
 
-## 🤝 Contributions
+## Contributions
 
 Pull requests are welcome. If you'd like to collaborate, feel free to fork and submit PRs or open an issue to discuss changes.
 
