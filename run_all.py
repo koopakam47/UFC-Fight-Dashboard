@@ -246,6 +246,7 @@ def run_complete_analysis(
         
         # Validate data quality
         quality_stats = validate_data_quality(df)
+        import logging
         logger = logging.getLogger(__name__)
         logger.info("Data quality: %.2f%% complete, %d duplicates", 
                    100 - quality_stats['missing_data_percentage'],
