@@ -1,41 +1,53 @@
+"""
+Legacy data loading script - refactored to use new modular architecture.
+
+This script provides backward compatibility while leveraging the new
+UFC analytics package for improved functionality.
+"""
+
 import os
-import pandas as pd
+import sys
 
-def load_fighter_data():
-    cleaned_path = 'data/cleaned_fighter_stats.csv'
-    raw_path = 'data/data.csv'
+# Add the project root to Python path for imports
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-    if os.path.exists(cleaned_path):
-        print("✅ Loading cleaned dataset...")
-        return pd.read_csv(cleaned_path)
+from ufc_analytics.data_loader import load_fighter_data as load_data_new
+from ufc_analytics.logging_utils import setup_logging, log_data_summary
 
-    print("⚙️ Cleaned dataset not found. Loading and cleaning raw data...")
-    df_raw = pd.read_csv(raw_path)
 
-    # Fix column name if needed
-    df_raw.columns = [col.replace('≤', '') for col in df_raw.columns]
+def load_fighter_data(force_reload: bool = False):
+    """
+    Load and clean UFC fighter data.
+    
+    This function maintains backward compatibility with the original interface
+    while using the new modular data loading system.
+    
+    Args:
+        force_reload (bool): Force reload from raw data even if cleaned data exists
+        
+    Returns:
+        pd.DataFrame: Cleaned fighter data in long format
+    """
+    # Set up logging
+    setup_logging(console_output=True)
+    
+    # Use the new modular data loader
+    df = load_data_new(force_reload=force_reload)
+    
+    # Log summary for user feedback
+    log_data_summary(df, "UFC Fighter Data")
+    
+    return df
 
-    # Split into red and blue fighters
-    red = df_raw.filter(like='R_').copy()
-    red.columns = red.columns.str.replace('R_', '', regex=False)
-    red['corner'] = 'red'
 
-    blue = df_raw.filter(like='B_').copy()
-    blue.columns = blue.columns.str.replace('B_', '', regex=False)
-    blue['corner'] = 'blue'
-
-    shared_cols = ['Winner', 'title_bout', 'weight_class', 'Referee', 'date', 'location']
-    for col in shared_cols:
-        red[col] = df_raw[col]
-        blue[col] = df_raw[col]
-
-    df_long = pd.concat([red, blue], ignore_index=True)
-
-    df_long['won'] = (
-        ((df_long['corner'] == 'red') & (df_long['Winner'] == 'red')) |
-        ((df_long['corner'] == 'blue') & (df_long['Winner'] == 'blue'))
-    ).astype(int)
-
-    df_long.to_csv(cleaned_path, index=False)
-    print(f"✅ Cleaned dataset saved to {cleaned_path}")
-    return df_long
+if __name__ == "__main__":
+    # Load data when script is run directly
+    data = load_fighter_data()
+    print(f"✅ Loaded dataset with shape: {data.shape}")
+    print(f"📊 Available weight classes: {sorted(data['weight_class'].unique())}")
+    
+    # Check if date column exists before displaying range
+    if 'date' in data.columns:
+        print(f"📅 Date range: {data['date'].min()} to {data['date'].max()}")
+    else:
+        print("📅 Date information not available in processed data")
