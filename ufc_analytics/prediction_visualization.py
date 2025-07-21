@@ -393,7 +393,7 @@ def generate_html_report(prediction_results: Dict[str, Any],
     """
     if 'error' in prediction_results:
         html_content = f"""
-        <html><head><title>UFC Prediction Analysis - Error</title></head>
+        <html><head><meta charset="UTF-8"><title>UFC Prediction Analysis - Error</title></head>
         <body><h1>Error in Prediction Analysis</h1>
         <p>{prediction_results['error']}</p></body></html>
         """
@@ -405,6 +405,7 @@ def generate_html_report(prediction_results: Dict[str, Any],
         <!DOCTYPE html>
         <html>
         <head>
+            <meta charset="UTF-8">
             <title>UFC Fight Prediction Analysis Report</title>
             <style>
                 body {{ font-family: Arial, sans-serif; margin: 40px; }}

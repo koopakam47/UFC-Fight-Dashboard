@@ -150,6 +150,54 @@ The system generates comprehensive prediction analysis including:
 - `output/prediction_analysis.md` - Detailed markdown analysis
 - `visualizations/prediction_*.svg` - Prediction performance charts
 
+### 🔮 Predicting Upcoming Fights
+
+The system now includes an **easy-to-use prediction tool** for upcoming fights! Use the trained models to predict outcomes between any two fighters.
+
+#### Quick Start
+
+```bash
+# Interactive mode - guided input for fighter stats
+python predict_upcoming_fight.py --interactive
+
+# Show example prediction with sample data
+python predict_upcoming_fight.py --example
+
+# List all available weight classes
+python predict_upcoming_fight.py --list-classes
+```
+
+#### Example Prediction
+
+```bash
+$ python predict_upcoming_fight.py --example
+
+=== Example Prediction ===
+
+Weight Class: Bantamweight
+Predicted Winner: Blue Corner
+Confidence: 67.3%
+
+Detailed Probabilities:
+  Red Corner: 32.7%
+  Blue Corner: 67.3%
+
+Model Info:
+  Training Accuracy: 64.5%
+  Training Samples: 369
+```
+
+#### Required Fighter Statistics
+
+- Significant Strike Accuracy (%)
+- Takedown Accuracy (%)
+- Total Wins & Current Win Streak
+- Average Knockdowns per Fight
+- Height and Physical Attributes
+- Historical Performance Metrics
+
+See `PREDICTION_TOOL_README.md` for detailed usage instructions and programmatic API.
+
 ---
 
 ## Technical Details

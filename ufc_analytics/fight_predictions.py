@@ -483,3 +483,93 @@ def save_prediction_results(prediction_results: Dict[str, Any],
         json.dump(serializable_results, f, indent=2)
     
     return output_path
+
+
+def predict_upcoming_fight(red_fighter_stats: Dict[str, float], 
+                          blue_fighter_stats: Dict[str, float], 
+                          weight_class: str,
+                          models_data: Optional[Dict] = None) -> Dict[str, Any]:
+    """
+    Predict the outcome of an upcoming fight between two fighters.
+    
+    Args:
+        red_fighter_stats: Statistics for the red corner fighter
+        blue_fighter_stats: Statistics for the blue corner fighter  
+        weight_class: Weight class for the fight
+        models_data: Pre-loaded models data (optional, will load from file if not provided)
+        
+    Returns:
+        Dict containing prediction results
+    """
+    # Load models data if not provided
+    if models_data is None:
+        results_file = os.path.join(PATHS.get('output_dir', '.'), 'prediction_results.json')
+        if not os.path.exists(results_file):
+            return {'error': 'No trained models found. Please run training first.'}
+        
+        try:
+            with open(results_file, 'r') as f:
+                models_data = json.load(f)
+        except Exception as e:
+            return {'error': f'Error loading models: {e}'}
+    
+    if 'models' not in models_data:
+        return {'error': 'No models found in data'}
+    
+    if weight_class not in models_data['models']:
+        available_classes = list(models_data['models'].keys())
+        return {
+            'error': f'Weight class "{weight_class}" not available. Available: {available_classes}'
+        }
+    
+    model_info = models_data['models'][weight_class]
+    weights = model_info['weights']
+    feature_names = model_info['feature_names']
+    
+    # Prepare feature vector
+    features = []
+    used_features = {}
+    
+    for feature_name in feature_names:
+        if feature_name.startswith('R_'):
+            # Red fighter feature
+            stat_name = feature_name[2:]  # Remove 'R_' prefix
+            value = red_fighter_stats.get(stat_name, 0.0)
+            used_features[feature_name] = value
+        elif feature_name.startswith('B_'):
+            # Blue fighter feature  
+            stat_name = feature_name[2:]  # Remove 'B_' prefix
+            value = blue_fighter_stats.get(stat_name, 0.0)
+            used_features[feature_name] = value
+        else:
+            value = 0.0
+            used_features[feature_name] = value
+        
+        features.append(value)
+    
+    # Calculate logistic regression prediction (weights[0] is bias)
+    x_with_bias = [1.0] + features
+    z = sum(w * x for w, x in zip(weights, x_with_bias))
+    z = max(-250, min(250, z))  # Prevent overflow
+    probability_red_wins = 1 / (1 + math.exp(-z))
+    probability_blue_wins = 1 - probability_red_wins
+    
+    # Determine predicted winner
+    if probability_red_wins > 0.5:
+        predicted_winner = 'Red'
+        confidence = probability_red_wins
+    else:
+        predicted_winner = 'Blue'
+        confidence = probability_blue_wins
+    
+    return {
+        'predicted_winner': predicted_winner,
+        'red_win_probability': probability_red_wins,
+        'blue_win_probability': probability_blue_wins,
+        'confidence': confidence,
+        'weight_class': weight_class,
+        'model_accuracy': model_info['accuracy'],
+        'training_samples': model_info['train_size'],
+        'features_used': used_features,
+        'model_features': feature_names
+    }
