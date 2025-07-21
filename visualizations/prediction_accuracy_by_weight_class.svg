@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+        .axis-label { font-family: Arial, sans-serif; font-size: 12px; }
+        .bar { stroke: black; stroke-width: 1; }
+        .text { font-family: Arial, sans-serif; font-size: 10px; }
+    </style>
+    <text x="400" y="25" text-anchor="middle" class="title">Model Accuracy by Weight Class</text>
+<line x1="60" y1="540" x2="740" y2="540" stroke="black" stroke-width="2"/>
+<line x1="60" y1="60" x2="60" y2="540" stroke="black" stroke-width="2"/>
+<rect x="60.0" y="295.9891177613681" width="41.84615384615385" height="244.0108822386319" fill="#2E8B57" class="bar"/>
+<text x="80.92307692307692" y="290.9891177613681" text-anchor="middle" class="text">0.645</text>
+<text x="80.92307692307692" y="560" text-anchor="middle" class="text" transform="rotate(-45 80.92307692307692 560)">Bantamweight</text>
+<rect x="112.3076923076923" y="422.7601314348302" width="41.84615384615385" height="117.23986856516976" fill="#DC143C" class="bar"/>
+<text x="133.23076923076923" y="417.7601314348302" text-anchor="middle" class="text">0.455</text>
+<text x="133.23076923076923" y="560" text-anchor="middle" class="text" transform="rotate(-45 133.23076923076923 560)">CatchWeight</text>
+<rect x="164.6153846153846" y="497.21552878179386" width="41.84615384615385" height="42.784471218206164" fill="#DC143C" class="bar"/>
+<text x="185.53846153846155" y="492.21552878179386" text-anchor="middle" class="text">0.343</text>
+<text x="185.53846153846155" y="560" text-anchor="middle" class="text" transform="rotate(-45 185.53846153846155 560)">Featherweight</text>
+<rect x="216.9230769230769" y="479.27710843373495" width="41.84615384615385" height="60.72289156626504" fill="#DC143C" class="bar"/>
+<text x="237.84615384615384" y="474.27710843373495" text-anchor="middle" class="text">0.370</text>
+<text x="237.84615384615384" y="560" text-anchor="middle" class="text" transform="rotate(-45 237.84615384615384 560)">Flyweight</text>
+<rect x="269.2307692307692" y="540.0" width="41.84615384615385" height="0.0" fill="#DC143C" class="bar"/>
+<text x="290.15384615384613" y="535.0" text-anchor="middle" class="text">0.278</text>
+<text x="290.15384615384613" y="560" text-anchor="middle" class="text" transform="rotate(-45 290.15384615384613 560)">Heavyweight</text>
+<rect x="321.53846153846155" y="499.4148020654045" width="41.84615384615385" height="40.58519793459553" fill="#DC143C" class="bar"/>
+<text x="342.46153846153845" y="494.4148020654045" text-anchor="middle" class="text">0.339</text>
+<text x="342.46153846153845" y="560" text-anchor="middle" class="text" transform="rotate(-45 342.46153846153845 560)">LightHeavyweight</text>
+<rect x="373.8461538461538" y="307.4642757074811" width="41.84615384615385" height="232.53572429251892" fill="#2E8B57" class="bar"/>
+<text x="394.7692307692307" y="302.4642757074811" text-anchor="middle" class="text">0.628</text>
+<text x="394.7692307692307" y="560" text-anchor="middle" class="text" transform="rotate(-45 394.7692307692307 560)">Lightweight</text>
+<rect x="426.15384615384613" y="514.3889845094665" width="41.84615384615385" height="25.61101549053355" fill="#DC143C" class="bar"/>
+<text x="447.07692307692304" y="509.38898450946647" text-anchor="middle" class="text">0.317</text>
+<text x="447.07692307692304" y="560" text-anchor="middle" class="text" transform="rotate(-45 447.07692307692304 560)">Middleweight</text>
+<rect x="478.46153846153845" y="60.0" width="41.84615384615385" height="480.0" fill="#2E8B57" class="bar"/>
+<text x="499.38461538461536" y="55.0" text-anchor="middle" class="text">1.000</text>
+<text x="499.38461538461536" y="560" text-anchor="middle" class="text" transform="rotate(-45 499.38461538461536 560)">OpenWeight</text>
+<rect x="530.7692307692307" y="485.7628645422813" width="41.84615384615385" height="54.23713545771871" fill="#DC143C" class="bar"/>
+<text x="551.6923076923076" y="480.7628645422813" text-anchor="middle" class="text">0.360</text>
+<text x="551.6923076923076" y="560" text-anchor="middle" class="text" transform="rotate(-45 551.6923076923076 560)">Welterweight</text>
+<rect x="583.0769230769231" y="259.51807228915663" width="41.84615384615385" height="280.48192771084337" fill="#2E8B57" class="bar"/>
+<text x="604.0" y="254.51807228915663" text-anchor="middle" class="text">0.700</text>
+<text x="604.0" y="560" text-anchor="middle" class="text" transform="rotate(-45 604.0 560)">WomenBantamweight</text>
+<rect x="635.3846153846154" y="271.61007667031765" width="41.84615384615385" height="268.38992332968235" fill="#2E8B57" class="bar"/>
+<text x="656.3076923076923" y="266.61007667031765" text-anchor="middle" class="text">0.682</text>
+<text x="656.3076923076923" y="560" text-anchor="middle" class="text" transform="rotate(-45 656.3076923076923 560)">WomenFlyweight</text>
+<rect x="687.6923076923076" y="287.52060875079263" width="41.84615384615385" height="252.47939124920737" fill="#2E8B57" class="bar"/>
+<text x="708.6153846153845" y="282.52060875079263" text-anchor="middle" class="text">0.658</text>
+<text x="708.6153846153845" y="560" text-anchor="middle" class="text" transform="rotate(-45 708.6153846153845 560)">WomenStrawweight</text>
+<text x="20" y="300" text-anchor="middle" class="axis-label" transform="rotate(-90 20 300)">Accuracy</text>
+<line x1="55" y1="540.0" x2="60" y2="540.0" stroke="black"/>
+<text x="50" y="543.0" text-anchor="end" class="text">0.28</text>
+<line x1="55" y1="444.0" x2="60" y2="444.0" stroke="black"/>
+<text x="50" y="447.0" text-anchor="end" class="text">0.42</text>
+<line x1="55" y1="348.0" x2="60" y2="348.0" stroke="black"/>
+<text x="50" y="351.0" text-anchor="end" class="text">0.57</text>
+<line x1="55" y1="252.0" x2="60" y2="252.0" stroke="black"/>
+<text x="50" y="255.0" text-anchor="end" class="text">0.71</text>
+<line x1="55" y1="156.0" x2="60" y2="156.0" stroke="black"/>
+<text x="50" y="159.0" text-anchor="end" class="text">0.86</text>
+<line x1="55" y1="60.0" x2="60" y2="60.0" stroke="black"/>
+<text x="50" y="63.0" text-anchor="end" class="text">1.00</text>
+</svg>

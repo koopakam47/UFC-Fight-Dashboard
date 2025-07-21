@@ -1,0 +1,227 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>UFC Fight Prediction Analysis Report</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 40px; }
+                h1 { color: #2c3e50; }
+                h2 { color: #34495e; border-bottom: 2px solid #3498db; }
+                h3 { color: #7f8c8d; }
+                .summary { background-color: #ecf0f1; padding: 20px; border-radius: 5px; }
+                .model-table { border-collapse: collapse; width: 100%; }
+                .model-table th, .model-table td { border: 1px solid #bdc3c7; padding: 8px; text-align: left; }
+                .model-table th { background-color: #3498db; color: white; }
+                .chart { margin: 20px 0; text-align: center; }
+                .accuracy-high { color: #27ae60; font-weight: bold; }
+                .accuracy-medium { color: #f39c12; font-weight: bold; }
+                .accuracy-low { color: #e74c3c; font-weight: bold; }
+            </style>
+        </head>
+        <body>
+            <h1>UFC Fight Prediction Analysis Report</h1>
+            
+            <div class="summary">
+                <h2>Executive Summary</h2>
+                <ul>
+                    <li><strong>Total weight classes analyzed:</strong> 14</li>
+                    <li><strong>Models successfully trained:</strong> 13</li>
+                    <li><strong>Overall average accuracy:</strong> 0.521</li>
+                </ul>
+            </div>
+            
+            <h2>Model Performance by Weight Class</h2>
+            <table class="model-table">
+                <tr>
+                    <th>Weight Class</th>
+                    <th>Accuracy</th>
+                    <th>Training Samples</th>
+                    <th>Test Samples</th>
+                    <th>Performance Category</th>
+                </tr>
+        
+                <tr>
+                    <td>OpenWeight</td>
+                    <td>1.000</td>
+                    <td>68</td>
+                    <td>18</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>WomenBantamweight</td>
+                    <td>0.700</td>
+                    <td>119</td>
+                    <td>30</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>WomenFlyweight</td>
+                    <td>0.682</td>
+                    <td>88</td>
+                    <td>22</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>WomenStrawweight</td>
+                    <td>0.658</td>
+                    <td>152</td>
+                    <td>38</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Bantamweight</td>
+                    <td>0.645</td>
+                    <td>369</td>
+                    <td>93</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Lightweight</td>
+                    <td>0.628</td>
+                    <td>857</td>
+                    <td>215</td>
+                    <td><span class="accuracy-high">High (≥60%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>CatchWeight</td>
+                    <td>0.455</td>
+                    <td>40</td>
+                    <td>11</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Flyweight</td>
+                    <td>0.370</td>
+                    <td>180</td>
+                    <td>46</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Welterweight</td>
+                    <td>0.360</td>
+                    <td>852</td>
+                    <td>214</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Featherweight</td>
+                    <td>0.343</td>
+                    <td>431</td>
+                    <td>108</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>LightHeavyweight</td>
+                    <td>0.339</td>
+                    <td>447</td>
+                    <td>112</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Middleweight</td>
+                    <td>0.317</td>
+                    <td>642</td>
+                    <td>161</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+                <tr>
+                    <td>Heavyweight</td>
+                    <td>0.278</td>
+                    <td>458</td>
+                    <td>115</td>
+                    <td><span class="accuracy-low">Low (<50%)</span></td>
+                </tr>
+            
+            </table>
+            
+            <h2>Visualizations</h2>
+        
+                    <div class="chart">
+                        <h3>Prediction Accuracy By Weight Class</h3>
+                        <object data="../visualizations/prediction_accuracy_by_weight_class.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Training Sample Sizes</h3>
+                        <object data="../visualizations/training_sample_sizes.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Confusion Matrix Best Openweight</h3>
+                        <object data="../visualizations/confusion_matrix_best_OpenWeight.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Confusion Matrix Worst Heavyweight</h3>
+                        <object data="../visualizations/confusion_matrix_worst_Heavyweight.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Roc Curve Openweight</h3>
+                        <object data="../visualizations/roc_curve_OpenWeight.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Roc Curve Womenbantamweight</h3>
+                        <object data="../visualizations/roc_curve_WomenBantamweight.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+                    <div class="chart">
+                        <h3>Roc Curve Womenflyweight</h3>
+                        <object data="../visualizations/roc_curve_WomenFlyweight.svg" type="image/svg+xml" width="800" height="600">
+                            Chart not available
+                        </object>
+                    </div>
+                
+            <h2>Key Insights</h2>
+            <ul>
+                <li><strong>Best performing weight class:</strong> OpenWeight with 1.000 accuracy</li>
+                <li><strong>Most challenging weight class:</strong> Heavyweight with 0.278 accuracy</li>
+                <li><strong>High performance models:</strong> 6 weight classes</li>
+                <li><strong>Medium performance models:</strong> 0 weight classes</li>
+                <li><strong>Low performance models:</strong> 7 weight classes</li>
+            </ul>
+            
+            <h3>Performance Distribution</h3>
+            <p>The predictive models show varying effectiveness across different weight classes. 
+            This variation could be due to factors such as:</p>
+            <ul>
+                <li>Sample size differences between weight classes</li>
+                <li>Unique fighting styles and meta-games in each division</li>
+                <li>Data quality and feature relevance variations</li>
+                <li>Competitive balance within divisions</li>
+            </ul>
+            
+            <h2>Methodology</h2>
+            <p>This analysis used correlation-based feature selection and simple logistic regression 
+            to predict fight outcomes. Each weight class was modeled separately to account for 
+            division-specific patterns and fighting styles.</p>
+            
+            <p><em>Report generated automatically by UFC Fight Analytics Dashboard</em></p>
+        </body>
+        </html>
+        
