@@ -226,7 +226,8 @@ def run_complete_analysis(
     
     results = {
         'data_loaded': False,
-        'correlations_computed': False, 
+        'correlations_computed': False,
+        'predictions_generated': False,
         'visualizations_generated': False,
         'readme_updated': False,
         'generated_files': [],
@@ -265,7 +266,62 @@ def run_complete_analysis(
         results['correlations_computed'] = True
         log_processing_step("Correlation Analysis", step_start)
         
-        # Step 3: Generate visualizations
+        # Step 3: Generate fight predictions
+        step_start = time.time()
+        log_processing_step("Fight Prediction Analysis")
+        
+        try:
+            from ufc_analytics.fight_predictions import create_fight_predictions, generate_prediction_analysis
+            from ufc_analytics.prediction_visualization import create_prediction_visualizations, generate_html_report
+            
+            # Create predictions based on correlation results
+            prediction_results = create_fight_predictions(
+                data_file=PATHS['raw_data'],
+                correlation_results=correlation_results
+            )
+            
+            if 'error' not in prediction_results:
+                # Generate prediction analysis
+                analysis_text = generate_prediction_analysis(prediction_results)
+                analysis_file = os.path.join(PATHS.get('output_dir', 'output'), 'prediction_analysis.md')
+                os.makedirs(os.path.dirname(analysis_file), exist_ok=True)
+                with open(analysis_file, 'w') as f:
+                    f.write(analysis_text)
+                
+                # Create prediction visualizations
+                prediction_charts = create_prediction_visualizations(
+                    prediction_results, 
+                    PATHS['visualizations_dir']
+                )
+                
+                # Generate HTML report
+                html_report = generate_html_report(
+                    prediction_results,
+                    prediction_charts,
+                    os.path.join(PATHS.get('output_dir', 'output'), 'prediction_report.html')
+                )
+                
+                logger.info("Generated %d prediction models with %.3f average accuracy", 
+                           prediction_results['summary']['trained_models'],
+                           prediction_results['summary']['overall_accuracy'])
+                logger.info("Created %d prediction visualization files", len(prediction_charts))
+                
+                results['predictions_generated'] = True
+                results['generated_files'].extend(prediction_charts)
+            else:
+                logger.warning("Prediction analysis failed: %s", prediction_results['error'])
+                results['predictions_generated'] = False
+                
+        except ImportError as e:
+            logger.warning("Could not import prediction modules: %s", str(e))
+            results['predictions_generated'] = False
+        except Exception as e:
+            logger.error("Prediction analysis failed: %s", str(e))
+            results['predictions_generated'] = False
+        
+        log_processing_step("Fight Prediction Analysis", step_start)
+        
+        # Step 4: Generate visualizations
         step_start = time.time()
         log_processing_step("Visualization Generation")
         
@@ -276,7 +332,7 @@ def run_complete_analysis(
         results['visualizations_generated'] = True
         log_processing_step("Visualization Generation", step_start)
         
-        # Step 4: Update documentation (optional)
+        # Step 5: Update documentation (optional)
         if update_readme:
             step_start = time.time()
             log_processing_step("Documentation Update")

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .title { font-family: Arial, sans-serif; font-size: 16px; font-weight: bold; }
+        .axis-label { font-family: Arial, sans-serif; font-size: 12px; }
+        .bar { stroke: black; stroke-width: 1; }
+        .text { font-family: Arial, sans-serif; font-size: 10px; }
+    </style>
+    <text x="200" y="25" text-anchor="middle" class="title">Confusion Matrix - OpenWeight (Best Model)</text>
+<rect x="60" y="100" width="140" height="140" fill="#90EE90" stroke="black" stroke-width="2"/>
+<text x="130" y="160" text-anchor="middle" class="text" font-size="14px">18</text>
+<text x="130" y="175" text-anchor="middle" class="text" font-size="12px">(100.0%)</text>
+<text x="130" y="190" text-anchor="middle" class="text" font-size="10px">True Pos</text>
+<rect x="200" y="100" width="140" height="140" fill="#FFB6C1" stroke="black" stroke-width="2"/>
+<text x="270" y="160" text-anchor="middle" class="text" font-size="14px">0</text>
+<text x="270" y="175" text-anchor="middle" class="text" font-size="12px">(0.0%)</text>
+<text x="270" y="190" text-anchor="middle" class="text" font-size="10px">False Pos</text>
+<rect x="60" y="240" width="140" height="140" fill="#FFB6C1" stroke="black" stroke-width="2"/>
+<text x="130" y="300" text-anchor="middle" class="text" font-size="14px">0</text>
+<text x="130" y="315" text-anchor="middle" class="text" font-size="12px">(0.0%)</text>
+<text x="130" y="330" text-anchor="middle" class="text" font-size="10px">False Neg</text>
+<rect x="200" y="240" width="140" height="140" fill="#90EE90" stroke="black" stroke-width="2"/>
+<text x="270" y="300" text-anchor="middle" class="text" font-size="14px">0</text>
+<text x="270" y="315" text-anchor="middle" class="text" font-size="12px">(0.0%)</text>
+<text x="270" y="330" text-anchor="middle" class="text" font-size="10px">True Neg</text>
+<text x="200" y="90" text-anchor="middle" class="axis-label">Predicted</text>
+<text x="40" y="260" text-anchor="middle" class="axis-label" transform="rotate(-90 40 260)">Actual</text>
+<text x="130" y="115" text-anchor="middle" class="text">Red Win</text>
+<text x="270" y="115" text-anchor="middle" class="text">Blue Win</text>
+<text x="25" y="190" text-anchor="middle" class="text">Red Win</text>
+<text x="25" y="330" text-anchor="middle" class="text">Blue Win</text>
+</svg>
